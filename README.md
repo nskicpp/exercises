@@ -28,8 +28,7 @@ Submitting an Exercise
 
     The tests should run when you type `make test`, so you'll have to
     include that in your CMake file.  See [Lesson 3][lesson-3] for an
-    example of how to do this. _[As of writing, this link is broken.
-    Check back soon!_]
+    example of how to do this.
 
   * Don't commit generated files (`.o`, the final executables, etc.)!
     Just commit source files, CMake files, and anything else that's
@@ -58,4 +57,4 @@ Submitting an Exercise
     when you finish or if you get stuck.
 
 
-[lesson-3]: https://github.com/nskicpp/writeups/blob/dev-environment/lessons/03-dev-environment.md
+[lesson-3]: https://github.com/nskicpp/writeups/blob/master/lessons/03-dev-environment.md
