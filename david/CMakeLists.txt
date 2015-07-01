@@ -11,6 +11,6 @@ enable_testing()
 add_test(NAME test_prompt_name0 COMMAND echo "David" | prompt_name)
 set_tests_properties(test_prompt_name0
   PROPERTIES PASS_REGULAR_EXPRESSION "David")
-add_test(NAME test_prompt_name1 COMMAND echo "Mauer" | prompt_name)
+add_test(NAME test_prompt_name1 COMMAND echo "Michael Mauer" | prompt_name)
 set_tests_properties(test_prompt_name1
-  PROPERTIES PASS_REGULAR_EXPRESSION "Mauer")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Michael Mauer")
