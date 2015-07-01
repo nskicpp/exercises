@@ -6,13 +6,12 @@
 #include <string>
 #include <cstdlib>
 
-using namespace std;
 using namespace std::literals;
 
 int main() {
-    string user_name;
-    cout << "Please enter your name: "s;
-    cin >> user_name;
-    cout << "Hello, " << user_name << "!\n"s;
+    std::string user_name;
+    std::cout << "Please enter your name: "s;
+    std::getline(std::cin, user_name);
+    std::cout << "Hello, " << user_name << "!\n"s;
     return EXIT_SUCCESS;
 }
