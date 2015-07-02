@@ -1,6 +1,6 @@
-/**
+/*
  * prompt_name.cpp - a program that prompts the user for their name and
- * echoes it back to them
+ * uses it to greet them
  */
 #include <iostream>
 #include <string>
