@@ -74,3 +74,51 @@ add_test(NAME test_trinary3 COMMAND bash -c "echo 201 | ./trinary")
 set_tests_properties(test_trinary3 PROPERTIES PASS_REGULAR_EXPRESSION "19")
 add_test(NAME test_trinary4 COMMAND bash -c "echo 3 | ./trinary")
 set_tests_properties(test_trinary4 PROPERTIES WILL_FAIL true)
+
+
+# STACK LANGUAGE
+add_executable(stack-lang stack-lang.cpp)
+add_test(NAME test_stack_lang1 COMMAND
+  bash -c "echo 1 print | ./stack-lang")
+set_tests_properties(test_stack_lang1 PROPERTIES
+  PASS_REGULAR_EXPRESSION "1")
+add_test(NAME test_stack_lang2 COMMAND
+  bash -c "echo 10 1 print | ./stack-lang")
+set_tests_properties(test_stack_lang2 PROPERTIES
+  PASS_REGULAR_EXPRESSION "10 1")
+add_test(NAME test_stack_lang3 COMMAND
+  bash -c "echo 10 2 + print | ./stack-lang")
+set_tests_properties(test_stack_lang3 PROPERTIES
+  PASS_REGULAR_EXPRESSION "12")
+add_test(NAME test_stack_lang4 COMMAND
+  bash -c "echo 10 2 - print | ./stack-lang")
+set_tests_properties(test_stack_lang4 PROPERTIES
+  PASS_REGULAR_EXPRESSION "8")
+add_test(NAME test_stack_lang5 COMMAND
+  bash -c "echo 10 2 '*' print | ./stack-lang")
+set_tests_properties(test_stack_lang5 PROPERTIES
+  PASS_REGULAR_EXPRESSION "20")
+add_test(NAME test_stack_lang6 COMMAND
+  bash -c "echo 10 2 / print | ./stack-lang")
+set_tests_properties(test_stack_lang6 PROPERTIES
+  PASS_REGULAR_EXPRESSION "5")
+add_test(NAME test_stack_lang7 COMMAND
+  bash -c "echo 10 2 | ./stack-lang")
+set_tests_properties(test_stack_lang7 PROPERTIES
+  WILL_FAIL true)
+add_test(NAME test_stack_lang8 COMMAND
+  bash -c "echo 10 + | ./stack-lang")
+set_tests_properties(test_stack_lang8 PROPERTIES
+  WILL_FAIL true)
+add_test(NAME test_stack_lang9 COMMAND
+  bash -c "echo 10 - | ./stack-lang")
+set_tests_properties(test_stack_lang9 PROPERTIES
+  WILL_FAIL true)
+add_test(NAME test_stack_lang10 COMMAND
+  bash -c "echo 10 * | ./stack-lang")
+set_tests_properties(test_stack_lang10 PROPERTIES
+  WILL_FAIL true)
+add_test(NAME test_stack_lang11 COMMAND
+  bash -c "echo 10 / | ./stack-lang")
+set_tests_properties(test_stack_lang11 PROPERTIES
+  WILL_FAIL true)
