@@ -62,3 +62,15 @@ add_test(NAME test_wc3 COMMAND bash -c "cat ../t/input_lesson4.3.in | ./wc")
 set_tests_properties(test_wc3 PROPERTIES PASS_REGULAR_EXPRESSION "11")
 add_test(NAME test_wc4 COMMAND bash -c "cat ../t/input_lesson4.4.in | ./wc")
 set_tests_properties(test_wc4 PROPERTIES PASS_REGULAR_EXPRESSION "12763")
+
+
+# TRINARY
+add_executable(trinary trinary.cpp)
+add_test(NAME test_trinary1 COMMAND bash -c "echo 1 | ./trinary")
+set_tests_properties(test_trinary1 PROPERTIES PASS_REGULAR_EXPRESSION "1")
+add_test(NAME test_trinary2 COMMAND bash -c "echo 10 | ./trinary")
+set_tests_properties(test_trinary2 PROPERTIES PASS_REGULAR_EXPRESSION "3")
+add_test(NAME test_trinary3 COMMAND bash -c "echo 201 | ./trinary")
+set_tests_properties(test_trinary3 PROPERTIES PASS_REGULAR_EXPRESSION "19")
+add_test(NAME test_trinary4 COMMAND bash -c "echo 3 | ./trinary")
+set_tests_properties(test_trinary4 PROPERTIES WILL_FAIL true)
