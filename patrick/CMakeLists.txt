@@ -50,3 +50,15 @@ foreach(num 1 2 3 4)
   add_test(NAME "test_cat${num}"
     COMMAND bash -c "diff <(cat ${__test_file}) <(cat ${__test_file} | ./cat)")
 endforeach()
+
+
+# WC
+add_executable(wc wc.cpp)
+add_test(NAME test_wc1 COMMAND bash -c "cat ../t/input_lesson4.1.in | ./wc")
+set_tests_properties(test_wc1 PROPERTIES PASS_REGULAR_EXPRESSION "9")
+add_test(NAME test_wc2 COMMAND bash -c "cat ../t/input_lesson4.2.in | ./wc")
+set_tests_properties(test_wc2 PROPERTIES PASS_REGULAR_EXPRESSION "14")
+add_test(NAME test_wc3 COMMAND bash -c "cat ../t/input_lesson4.3.in | ./wc")
+set_tests_properties(test_wc3 PROPERTIES PASS_REGULAR_EXPRESSION "11")
+add_test(NAME test_wc4 COMMAND bash -c "cat ../t/input_lesson4.4.in | ./wc")
+set_tests_properties(test_wc4 PROPERTIES PASS_REGULAR_EXPRESSION "12763")
