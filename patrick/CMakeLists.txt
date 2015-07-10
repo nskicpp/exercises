@@ -122,3 +122,19 @@ add_test(NAME test_stack_lang11 COMMAND
   bash -c "echo 10 / | ./stack-lang")
 set_tests_properties(test_stack_lang11 PROPERTIES
   WILL_FAIL true)
+
+
+# FACTORS
+add_executable(factors factors.cpp)
+add_test(NAME test_factors1 COMMAND bash -c "echo 2 | ./factors")
+set_tests_properties(test_factors1 PROPERTIES
+  PASS_REGULAR_EXPRESSION "2")
+add_test(NAME test_factors2 COMMAND bash -c "echo 10 | ./factors")
+set_tests_properties(test_factors2 PROPERTIES
+  PASS_REGULAR_EXPRESSION "2 5")
+add_test(NAME test_factors3 COMMAND bash -c "echo 202 | ./factors")
+set_tests_properties(test_factors3 PROPERTIES
+  PASS_REGULAR_EXPRESSION "2 101")
+add_test(NAME test_factors4 COMMAND bash -c "echo 4 | ./factors")
+set_tests_properties(test_factors4 PROPERTIES
+  PASS_REGULAR_EXPRESSION "2")
