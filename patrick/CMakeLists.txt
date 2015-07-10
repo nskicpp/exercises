@@ -41,3 +41,12 @@ set_tests_properties(test_greeting1
 add_test(NAME test_greeting2 COMMAND bash -c "echo Patrick M | ./greeting")
 set_tests_properties(test_greeting2
   PROPERTIES PASS_REGULAR_EXPRESSION "Patrick M")
+
+
+# CAT
+add_executable(cat cat.cpp)
+foreach(num 1 2 3 4)
+  set(__test_file "../t/input_lesson4.${num}.in")
+  add_test(NAME "test_cat${num}"
+    COMMAND bash -c "diff <(cat ${__test_file}) <(cat ${__test_file} | ./cat)")
+endforeach()
