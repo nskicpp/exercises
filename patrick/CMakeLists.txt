@@ -5,9 +5,12 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD          14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(greeting greeting.cpp)
-
 enable_testing()
-add_test(NAME test_greeting_success COMMAND greeting)
-set_tests_properties(test_greeting_success
-  PROPERTIES PASS_REGULAR_EXPRESSION "Hello, .+!")
+
+add_executable(greeting greeting.cpp)
+add_test(NAME test_greeting1 COMMAND bash -c "echo Patrick | ./greeting")
+set_tests_properties(test_greeting1
+  PROPERTIES PASS_REGULAR_EXPRESSION "Patrick")
+add_test(NAME test_greeting2 COMMAND bash -c "echo Patrick M | ./greeting")
+set_tests_properties(test_greeting2
+  PROPERTIES PASS_REGULAR_EXPRESSION "Patrick M")
