@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(prompt_name prompt_name.cpp)
 add_executable(poor_mans_cat poor_mans_cat.cpp)
+add_executable(wordcounter wordcounter.cpp)
 
 enable_testing()
 add_test(NAME test_prompt_name0 COMMAND /bin/sh -c "echo David | ./prompt_name")
@@ -22,3 +23,10 @@ set_tests_properties(test_poor_mans_cat0
 add_test(NAME test_poor_mans_cat1 COMMAND /bin/sh -c "echo 'Test \n Test 2' | ./poor_mans_cat")
 set_tests_properties(test_poor_mans_cat1
   PROPERTIES PASS_REGULAR_EXPRESSION "Test \n Test 2")
+
+add_test(NAME test_wordcounter0 COMMAND /bin/sh -c "echo A and B and C | ./wordcounter")
+set_tests_properties(test_wordcounter0
+  PROPERTIES PASS_REGULAR_EXPRESSION "5")
+add_test(NAME test_wordcounter1 COMMAND /bin/sh -c "echo | ./wordcounter")
+set_tests_properties(test_wordcounter1
+  PROPERTIES PASS_REGULAR_EXPRESSION "0")
