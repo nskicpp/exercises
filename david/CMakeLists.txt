@@ -5,9 +5,30 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  # General warning flags
+  add_compile_options(-Werror -Wall -Wextra -pedantic)
+  # Turn on optimization
+  add_compile_options(-O3 -fvectorize -fsized-deallocation)
+endif()
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  # General warning flags
+  add_compile_options(-Werror -Wall -Wextra -pedantic -pedantic-errors)
+  # Turn on additional warnings
+  add_compile_options(-Wcast-align -Wcast-qual -Wconversion -Wformat
+                      -Wlogical-op -Wno-deprecated-declarations
+                      -Wreturn-local-addr -Wshadow -Wsign-conversion
+                      -Wswitch-enum -Wundef -Wuninitialized -Wuseless-cast
+                      -Wzero-as-null-pointer-constant)
+  # Turn on optimization
+  add_compile_options(-O3 -flto -fsized-deallocation)
+endif()
+
 add_executable(prompt_name prompt_name.cpp)
 add_executable(poor_mans_cat poor_mans_cat.cpp)
 add_executable(wordcounter wordcounter.cpp)
+add_executable(trinary trinary.cpp)
 
 enable_testing()
 add_test(NAME test_prompt_name0 COMMAND /bin/sh -c "echo David | ./prompt_name")
@@ -30,3 +51,19 @@ set_tests_properties(test_wordcounter0
 add_test(NAME test_wordcounter1 COMMAND /bin/sh -c "echo | ./wordcounter")
 set_tests_properties(test_wordcounter1
   PROPERTIES PASS_REGULAR_EXPRESSION "0")
+add_test(NAME test_wordcounter2 COMMAND /bin/sh -c "echo dashed-words punctuation? ? | ./wordcounter")
+set_tests_properties(test_wordcounter2
+  PROPERTIES PASS_REGULAR_EXPRESSION "3")
+
+add_test(NAME test_trinary0 COMMAND /bin/sh -c "echo 10 | ./trinary")
+set_tests_properties(test_trinary0
+  PROPERTIES PASS_REGULAR_EXPRESSION "3")
+add_test(NAME test_trinary1 COMMAND /bin/sh -c "echo ' 120\n' | ./trinary")
+set_tests_properties(test_trinary1
+  PROPERTIES PASS_REGULAR_EXPRESSION "15")
+add_test(NAME test_trinary2 COMMAND /bin/sh -c "echo | ./trinary")
+set_tests_properties(test_trinary2 PROPERTIES WILL_FAIL true)
+add_test(NAME test_trinary3 COMMAND /bin/sh -c "echo 14 | ./trinary")
+set_tests_properties(test_trinary3 PROPERTIES WILL_FAIL true)
+add_test(NAME test_trinary4 COMMAND /bin/sh -c "echo '10 ' | ./trinary")
+set_tests_properties(test_trinary4 PROPERTIES WILL_FAIL true)
