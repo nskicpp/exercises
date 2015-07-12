@@ -9,7 +9,7 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # General warning flags
   add_compile_options(-Werror -Wall -Wextra -pedantic)
   # Turn on optimization
-  add_compile_options(-O3 -fvectorize -fsized-deallocation)
+  add_compile_options(-O3 -fvectorize)
 endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
