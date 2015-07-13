@@ -17,7 +17,7 @@ int main() {
 
     cout << "Enter a single integer > 1, then press [ENTER]:\n"s;
 
-    long num;
+    auto num = 0;
     cin >> num;
 
     if (num < 2) {

@@ -108,9 +108,10 @@ add_test(NAME test_stack_lang_4
 set_tests_properties(test_stack_lang_4
   PROPERTIES PASS_REGULAR_EXPRESSION "The stack is currently: 2")
 add_test(NAME test_stack_lang_5
-  COMMAND /bin/bash -c "echo '6 2 - 2 * 4 / print' | ./stack_lang")
-set_tests_properties(test_stack_lang_4
-  PROPERTIES PASS_REGULAR_EXPRESSION "The stack is currently: 2")
+  COMMAND /bin/bash -c "echo '1 0 /' | ./stack_lang")
+set_tests_properties(test_stack_lang_5
+  PROPERTIES PASS_REGULAR_EXPRESSION "Ignored invalid input: Divide by zero.")
+
 
 # Exercise 5.
 add_executable(prime_factors prime_factors.cpp)

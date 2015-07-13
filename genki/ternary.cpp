@@ -49,9 +49,9 @@ int main() {
     //   `radix_point_pos` stays constant.
     //   `exponent_index`  -> -1 * (current iteration count, starting with 1).
     //   If a character != '0' '1' or '2' is read in, exit with failure.
-    char digit;
+    auto digit = '_';
     while (cin >> digit) {
-        double digit_num;
+        auto digit_num = 0.;
 
         if (digit == '.') {
             if (radix_point_pos == -1) {
@@ -97,11 +97,11 @@ int main() {
     // Loop invariant: `decimal_result` contains the value of creating the
     //  decimal representation of the values in `digit_tuples` up to that time.
     for (tuple<double, int> digit_tuple : digit_tuples) {
-        double digit_n;
-        int exponent_i;
+        auto digit_n = 0.;
+        auto exponent_i = 0;
         tie(digit_n, exponent_i) = digit_tuple;
 
-        double power;
+        auto power = 0.;
         if (exponent_i < 0) {
             power = static_cast<double>(exponent_i);
         } else {
@@ -111,7 +111,7 @@ int main() {
         decimal_result += digit_n * pow(3.0, power);
     }
 
-    cout << "In decimal, it is: "s
+    cout << "In decimal, it is ~"s
          << fixed << setprecision(4) // Show to the millionth place.
          << decimal_result
          << "\n"s;

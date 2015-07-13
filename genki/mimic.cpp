@@ -14,7 +14,7 @@ int main() {
 
     cout << "Type a message and then press enter.\n"s;
 
-    string input;
+    auto input = ""s;
     while (getline(cin, input)) {
         cout << input << "\n"s;
     }

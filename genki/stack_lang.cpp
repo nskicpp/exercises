@@ -24,8 +24,7 @@ int main() {
          << "To evaluate, press [ENTER]. To then exit, press [CTRL-D].\n"s;
 
     auto stack = vector<long>{};
-
-    string curr_input;
+    auto curr_input = ""s;
 
     // Loop invariant: Any input from a previous iteration has been interpreted
     // according to the language rules.
@@ -50,7 +49,7 @@ int main() {
 
             auto second_num = stack.back();
 
-            if (second_num == 0 && curr_input == "-"s) {
+            if (second_num == 0 && curr_input == "/"s) {
                 cerr << "--> Ignored invalid input: Divide by zero.\n"s;
                 continue;
             }

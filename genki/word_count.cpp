@@ -14,7 +14,7 @@ int main() {
 
     cout << "Type a message. When finished, press [ENTER], then [CTRL-D].\n"s;
 
-    string input;
+    auto input = ""s;
     auto count = 0;
     while (cin >> input) {
         ++count;
