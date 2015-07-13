@@ -3,9 +3,9 @@
    Get a user's first name, then print them a message.
 */
 
+#include <cstdlib>  // EXIT_SUCCESS
+#include <iostream> // cin, cout
 #include <string>
-#include <cstdlib>
-#include <iostream>
 
 int main() {
     using namespace std::literals;
