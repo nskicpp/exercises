@@ -28,6 +28,7 @@ endif()
 add_executable(prompt_name prompt_name.cpp)
 add_executable(poor_mans_cat poor_mans_cat.cpp)
 add_executable(wordcounter wordcounter.cpp)
+add_executable(trinary trinary.cpp)
 
 enable_testing()
 add_test(NAME test_prompt_name0 COMMAND /bin/sh -c "echo David | ./prompt_name")
@@ -56,3 +57,16 @@ set_tests_properties(test_wordcounter2
 add_test(NAME test_wordcounter3 COMMAND /bin/sh -c "echo '\nA word \n More  words\ttab-separated' | ./wordcounter")
 set_tests_properties(test_wordcounter3
   PROPERTIES PASS_REGULAR_EXPRESSION "5")
+
+add_test(NAME test_trinary0 COMMAND /bin/sh -c "echo 10 | ./trinary")
+set_tests_properties(test_trinary0
+  PROPERTIES PASS_REGULAR_EXPRESSION "3")
+add_test(NAME test_trinary1 COMMAND /bin/sh -c "echo ' 120\n' | ./trinary")
+set_tests_properties(test_trinary1
+  PROPERTIES PASS_REGULAR_EXPRESSION "15")
+add_test(NAME test_trinary2 COMMAND /bin/sh -c "echo | ./trinary")
+set_tests_properties(test_trinary2 PROPERTIES WILL_FAIL true)
+add_test(NAME test_trinary3 COMMAND /bin/sh -c "echo 14 | ./trinary")
+set_tests_properties(test_trinary3 PROPERTIES WILL_FAIL true)
+add_test(NAME test_trinary4 COMMAND /bin/sh -c "echo '10 ' | ./trinary")
+set_tests_properties(test_trinary4 PROPERTIES PASS_REGULAR_EXPRESSION "3")
