@@ -30,6 +30,7 @@ add_executable(poor_mans_cat poor_mans_cat.cpp)
 add_executable(wordcounter wordcounter.cpp)
 add_executable(trinary trinary.cpp)
 add_executable(stack_language stack_language.cpp)
+add_executable(prime_factors prime_factors.cpp)
 
 enable_testing()
 add_test(NAME test_prompt_name0 COMMAND /bin/sh -c "echo David | ./prompt_name")
@@ -98,3 +99,20 @@ add_test(NAME test_stack_language_fail2 COMMAND /bin/sh -c "echo 20 20 - + | ./s
 set_tests_properties(test_stack_language_fail2 PROPERTIES WILL_FAIL true)
 add_test(NAME test_stack_language_fail3 COMMAND /bin/sh -c "echo 1 3 print | ./stack_language")
 set_tests_properties(test_stack_language_fail3 PROPERTIES WILL_FAIL true)
+
+add_test(NAME test_prime_factors0 COMMAND /bin/sh -c "echo 10 | ./prime_factors")
+set_tests_properties(test_prime_factors0
+  PROPERTIES PASS_REGULAR_EXPRESSION "2 5")
+add_test(NAME test_prime_factors1 COMMAND /bin/sh -c "echo 41 | ./prime_factors")
+set_tests_properties(test_prime_factors1
+  PROPERTIES PASS_REGULAR_EXPRESSION "41")
+add_test(NAME test_prime_factors2 COMMAND /bin/sh -c "echo 34 | ./prime_factors")
+set_tests_properties(test_prime_factors2 PROPERTIES PASS_REGULAR_EXPRESSION "2 17")
+add_test(NAME test_prime_factors3 COMMAND /bin/sh -c "echo 120 | ./prime_factors")
+set_tests_properties(test_prime_factors3 PROPERTIES PASS_REGULAR_EXPRESSION "2 3 5")
+add_test(NAME test_prime_factors4 COMMAND /bin/sh -c "echo 0 | ./prime_factors")
+set_tests_properties(test_prime_factors4
+  PROPERTIES PASS_REGULAR_EXPRESSION "no prime factors")
+add_test(NAME test_prime_factors5 COMMAND /bin/sh -c "echo 1 | ./prime_factors")
+set_tests_properties(test_prime_factors5
+  PROPERTIES PASS_REGULAR_EXPRESSION "no prime factors")
