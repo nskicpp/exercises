@@ -15,5 +15,4 @@ int main() {
         ++words;
     }
     std::cout << words;
-    return EXIT_SUCCESS;
 }
