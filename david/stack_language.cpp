@@ -3,6 +3,7 @@
  */
 #include <iostream>
 #include <string>
+#include <cassert>
 #include <cstdlib>
 #include <vector>
 
@@ -40,8 +41,9 @@ int main() {
                 stack.push_back(a / b);
             }
             else {
-                std::cerr << "Unimplemented operator: "s << input << std::endl;
-                return EXIT_FAILURE;
+                // Program flow shouldn't reach here, since there are no
+                // other operators.
+                assert(false);
             }
         }
         else if (input == "print"s) {
